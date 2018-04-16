@@ -8,7 +8,7 @@
 
 import Service
 
-/// Represents the adapters currently configured for FileSystem.
+/// Represents the adapters currently configured for Storage.
 public struct Adapters: Service {
     /// Internal storage: [AdapterIdentifier: Adapter]
     internal let storage: [String: Any]

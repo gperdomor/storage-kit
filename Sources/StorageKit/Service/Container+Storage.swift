@@ -25,7 +25,7 @@ extension Container {
 
 /// Request file system adapters.
 extension Container {
-    /// Requests a filesystem to the adapter.
+    /// Requests a storage to the adapter.
     public func requestStorage<Adapter>(
         to adapter: AdapterIdentifier<Adapter>
         ) -> Future<Adapter> {
@@ -34,7 +34,7 @@ extension Container {
 
             guard let fs = adapters.adapter(for: adapter) else {
                 throw StorageError(
-                    identifier: "requestFileSystem",
+                    identifier: "requestStorage",
                     reason: "No adapter with id `\(adapter.uid)` is configured.",
                     source: .capture()
                 )

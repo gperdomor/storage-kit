@@ -8,7 +8,7 @@
 
 import Service
 
-/// Registers filesystem services.
+/// Registers storage services.
 public final class StorageProvider: Provider {
     /// See Provider.repositoryName
     public static let repositoryName = "storage-kit"
