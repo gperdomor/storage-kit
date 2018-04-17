@@ -6,9 +6,14 @@
 //  Copyright © 2018 Gustavo Perdomo. All rights reserved.
 //
 
-import HTTP
+import Vapor
 
 public struct StorageResult {
-    let success: Bool
-    let response: HTTPResponse?
+    public let success: Bool
+    public let response: Response?
+    
+    public init(success: Bool, response: Response?) {
+        self.success = success
+        self.response = response
+    }
 }

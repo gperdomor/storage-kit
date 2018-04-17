@@ -21,11 +21,12 @@ import Foundation
      /// Writes the given content into the file.
      ///
      /// - Parameters:
+     ///   - on: The worker.
      ///   - content: The content of the file.
      ///   - path: Path where will be written.
      /// - Returns: Future<StorageResult>
      /// - Throws: `AdapterError`.
-    func write(content: Data, at path: String) throws -> Future<StorageResult>
+    func write(on worker: Worker, content: Data, at path: String) throws -> Future<StorageResult>
 
      /// Indicates whether the file exists.
      ///
@@ -42,19 +43,22 @@ import Foundation
 
      /// Deletes the path.
      ///
-     /// - Parameter path: A path.
+     /// - Parameters:
+     ///   - on: The worker.
+     ///   - path: A path.
      /// - Returns: Future<StorageResult>
      /// - Throws: `AdapterError`.
-     func delete(at path: String) throws -> Future<StorageResult>
+     func delete(on worker: Worker, at path: String) throws -> Future<StorageResult>
 
      /// Renames the file.
      ///
      /// - Parameters:
+     ///   - on: The worker.
      ///   - path: A path.
      ///   - target: A path.
      /// - Returns: Future<StorageResult>
      /// - Throws: `AdapterError`
-     func rename(at path: String, to target: String) throws -> Future<StorageResult>
+     func rename(on worker: Worker, at path: String, to target: String) throws -> Future<StorageResult>
 
      /// Check if the path is a directory.
      ///
