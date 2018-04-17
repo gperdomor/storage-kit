@@ -6,6 +6,7 @@
 //  Copyright © 2018 Gustavo Perdomo. All rights reserved.
 //
 
+import Async
 import Foundation
 
 /// `Adapter` provides an interface with commons operations to handle files.
@@ -22,9 +23,9 @@ import Foundation
      /// - Parameters:
      ///   - content: The content of the file.
      ///   - path: Path where will be written.
-     /// - Returns: `true`if the file was written, `false` otherwise.
+     /// - Returns: Future<StorageResult>
      /// - Throws: `AdapterError`.
-     func write(content: Data, at path: String) throws -> Bool
+    func write(content: Data, at path: String) throws -> Future<StorageResult>
 
      /// Indicates whether the file exists.
      ///
@@ -42,16 +43,18 @@ import Foundation
      /// Deletes the path.
      ///
      /// - Parameter path: A path.
+     /// - Returns: Future<StorageResult>
      /// - Throws: `AdapterError`.
-     func delete(at path: String) throws
+     func delete(at path: String) throws -> Future<StorageResult>
 
      /// Renames the file.
      ///
      /// - Parameters:
      ///   - path: A path.
      ///   - target: A path.
+     /// - Returns: Future<StorageResult>
      /// - Throws: `AdapterError`
-     func rename(at path: String, to target: String) throws
+     func rename(at path: String, to target: String) throws -> Future<StorageResult>
 
      /// Check if the path is a directory.
      ///
