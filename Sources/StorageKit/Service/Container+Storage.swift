@@ -32,7 +32,7 @@ extension Container {
         return Future.map(on: self) {
             let adapters = try self.make(Adapters.self)
 
-            guard let fs = adapters.adapter(for: adapter) else {
+            guard let storage = adapters.adapter(for: adapter) else {
                 throw StorageError(
                     identifier: "requestStorage",
                     reason: "No adapter with id `\(adapter.uid)` is configured.",
@@ -40,7 +40,7 @@ extension Container {
                 )
             }
 
-            return fs
+            return storage
         }
     }
 }

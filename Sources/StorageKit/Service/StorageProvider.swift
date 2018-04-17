@@ -22,8 +22,8 @@ public final class StorageProvider: Provider {
             let config = try container.make(AdapterConfig.self)
             var adapters: [String: Any] = [:]
             for (id, lazyAdapter) in config.adapters {
-                let fs = try lazyAdapter(container)
-                adapters[id] = fs
+                let storage = try lazyAdapter(container)
+                adapters[id] = storage
             }
             return Adapters(adapters)
         }

@@ -30,7 +30,7 @@ public struct AdapterIdentifier<A: Adapter> {
 
 extension AdapterIdentifier: Equatable {
     /// See Equatable.==
-    public static func ==(lhs: AdapterIdentifier, rhs: AdapterIdentifier) -> Bool {
+    public static func == (lhs: AdapterIdentifier, rhs: AdapterIdentifier) -> Bool {
         return lhs.uid == rhs.uid
     }
 }
