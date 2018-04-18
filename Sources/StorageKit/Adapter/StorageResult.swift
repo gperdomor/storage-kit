@@ -11,7 +11,7 @@ import Vapor
 public struct StorageResult {
     public let success: Bool
     public let response: Response?
-    
+
     public init(success: Bool, response: Response?) {
         self.success = success
         self.response = response

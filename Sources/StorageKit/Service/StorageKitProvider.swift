@@ -9,7 +9,7 @@
 import Service
 
 /// Registers storage services.
-public final class StorageProvider: Provider {
+public final class StorageKitProvider: Provider {
     /// See Provider.repositoryName
     public static let repositoryName = "storage-kit"
 
