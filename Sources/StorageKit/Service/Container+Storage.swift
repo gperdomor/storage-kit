@@ -33,7 +33,7 @@ extension Container {
             let adapters = try self.make(Adapters.self)
 
             guard let storage = adapters.adapter(for: adapter) else {
-                throw StorageError(
+                throw StorageKitError(
                     identifier: "requestStorage",
                     reason: "No adapter with id `\(adapter.uid)` is configured.",
                     source: .capture()

@@ -1,5 +1,5 @@
 //
-//  StorageError.swift
+//  StorageKitError.swift
 //  StorageKit
 //
 //  Created by Gustavo Perdomo on 4/16/18.
@@ -9,7 +9,7 @@
 import Debugging
 
 /// Errors that can be thrown while working with Vapor.
-public struct StorageError: Debuggable {
+public struct StorageKitError: Debuggable {
     public static let readableName = "Storage Error"
     public let identifier: String
     public var reason: String
@@ -28,7 +28,7 @@ public struct StorageError: Debuggable {
         self.identifier = identifier
         self.reason = reason
         self.sourceLocation = source
-        self.stackTrace = StorageError.makeStackTrace()
+        self.stackTrace = StorageKitError.makeStackTrace()
         self.suggestedFixes = suggestedFixes
         self.possibleCauses = possibleCauses
     }
