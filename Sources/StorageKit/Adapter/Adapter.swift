@@ -12,66 +12,96 @@ import Vapor
 
 /// `Adapter` provides an interface with commons operations to handle files.
 public protocol Adapter: class {
-    /// Reads the content of the file.
+    // MARK: Bucket Operations
+    
+    /// Create a new bucket.
     ///
     /// - Parameters:
-    ///   - path: Path to the file to be reading.
+    ///   - bucket: name of the bucket.
+    ///   - metadata: bucket metadata.
     ///   - container: Vapor Container.
-    /// - Returns: Future with the Data of the content of the file, if exists.
-    /// - Throws: `AdapterError`.
-    func read(at path: String, on container: Container) throws -> Future<Data?>
-
-    /// Writes the given content into the file.
+    /// - Returns: Future<Void>
+    /// - Throws: <#throws value description#>
+    func create(bucket: String, metadata: Codable?, on container: Container) throws -> Future<Void>
+    
+    /// Permanently deletes an empty bucket.
     ///
     /// - Parameters:
-    ///   - content: The content of the file.
-    ///   - path: Path where will be written.
+    ///   - bucket: name of the bucket.
     ///   - container: Vapor Container.
-    /// - Returns: Future<StorageResult>
-    /// - Throws: `AdapterError`.
-    func write(content: Data, at path: String, on container: Container) throws -> Future<StorageResult>
-
-    /// Indicates whether the file exists.
+    /// - Returns: Future<Void>
+    /// - Throws: <#throws value description#>
+    func delete(bucket: String, on container: Container) throws -> Future<Void>
+    
+    /// Returns metadata for the specified bucket.
     ///
     /// - Parameters:
-    ///   - path: A path.
+    ///   - bucket: name of the bucket.
     ///   - container: Vapor Container.
-    /// - Returns: Future with `true`if the path exists, `false` otherwise.
-    /// - Throws: `AdapterError`.
-    func exists(at path: String, on container: Container) throws -> Future<Bool>
-
-    /// Returns an array of all paths (files and directories).
+    /// - Returns: Future<BucketInfo?>
+    /// - Throws: <#throws value description#>
+    func get(bucket: String, on container: Container) throws -> Future<BucketInfo?>
+    
+    /// Retrieves a list of buckets.
     ///
-    /// - Parameter container: <#container description#>
-    /// - Returns: Future with Array of paths.
-    /// - Throws: `AdapterError`.
-    func list(on container: Container) throws -> Future<[String]>
-
-    /// Deletes the path.
-    ///
-    /// - Parameters:
-    ///   - path: A path.
-    ///   - container: Vapor Container.
-    /// - Returns: Future<StorageResult>
-    /// - Throws: `AdapterError`.
-    func delete(at path: String, on container: Container) throws -> Future<StorageResult>
-
-    /// Renames the file.
+    /// - Parameter container: Vapor Container.
+    /// - Returns: Array of BucketInfo.
+    /// - Throws: <#throws value description#>
+    func list(on container: Container) throws -> Future<[BucketInfo]>
+    
+    // MARK: Objects Operations
+    
+    /// Create a copy of an object.
     ///
     /// - Parameters:
-    ///   - path: A path.
-    ///   - target: A path.
+    ///   - object: name of the source object.
+    ///   - bucket: name of the source bucket.
+    ///   - as: name of the target object.
+    ///   - targetBucket: name of the target bucket.
     ///   - container: Vapor Container.
-    /// - Returns: Future<StorageResult>
-    /// - Throws: `AdapterError`
-    func rename(at path: String, to target: String, on container: Container) throws -> Future<StorageResult>
-
-    /// Check if the path is a directory.
+    /// - Returns: Future<ObjectInfo>
+    /// - Throws: <#throws value description#>
+    func copy(object: String, from bucket: String, as: String, to targetBucket: String, on container: Container) throws -> Future<ObjectInfo>
+    
+    /// Create a new object
     ///
     /// - Parameters:
-    ///   - path: A path.
+    ///   - object: name of the object.
+    ///   - bucket: name of the bucket.
+    ///   - content: Data oto be writen.
+    ///   - metadata: object metadata.
     ///   - container: Vapor Container.
-    /// - Returns: Future with `true`if the path is adirectory, `false` otherwise.
-    /// - Throws: `AdapterError`.
-    func isDirectory(at path: String, on container: Container) throws -> Future<Bool>
+    /// - Returns: Future<ObjectInfo>
+    /// - Throws: <#throws value description#>
+    func create(object: String, in bucket: String, with content: Data, metadata: Codable?, on container: Container) throws -> Future<ObjectInfo>
+    
+    /// Permanently deletes an empty bucket.
+    ///
+    /// - Parameters:
+    ///   - object: name of the object.
+    ///   - bucket: name of the bucket.
+    ///   - container: Vapor Container.
+    /// - Returns: Future<Void>
+    /// - Throws: <#throws value description#>
+    func delete(object: String, in bucket: String, on container: Container) throws -> Future<Void>
+    
+    /// Reads the content of a object inside a bucket.
+    ///
+    /// - Parameters:
+    ///   - object: name of the object.
+    ///   - bucket: name of the bucket.
+    ///   - container: Vapor Container
+    /// - Returns: Future<Data>
+    /// - Throws: <#throws value description#>
+    func get(object: String, in bucket: String, on container: Container) throws -> Future<Data>
+    
+    /// Retrieves a list of objects from a bucket.
+    ///
+    /// - Parameters:
+    ///   - bucket: name of the bucket.
+    ///   - prefix: <#prefix description#>
+    ///   - container: Vapor Container.
+    /// - Returns: Future<[ObjectInfo]>
+    /// - Throws: <#throws value description#>
+    func listObjects(in bucket: String, prefix: String?, on container: Container) throws -> Future<[ObjectInfo]>
 }

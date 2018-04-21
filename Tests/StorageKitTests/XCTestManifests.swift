@@ -11,7 +11,9 @@ import XCTest
 #if !os(macOS)
 public func allTests() -> [XCTestCaseEntry] {
     return [
-        testCase(StorageKitTests.allTests)
+        testCase(AdapterIdentifierTests.allTests),
+        testCase(AdaptersTests.allTests),
+        testCase(AdapterConfigTests.allTests)
     ]
 }
 #endif
