@@ -18,10 +18,11 @@ public protocol Adapter: class {
     ///
     /// - Parameters:
     ///   - bucket: name of the bucket.
+    ///   - metadata: bucket metadata.
     ///   - container: Vapor Container.
     /// - Returns: Future<Void>
     /// - Throws: <#throws value description#>
-    func create(bucket: String, on container: Container) throws -> Future<Void>
+    func create(bucket: String, metadata: Codable?, on container: Container) throws -> Future<Void>
     
     /// Permanently deletes an empty bucket.
     ///
@@ -68,10 +69,11 @@ public protocol Adapter: class {
     ///   - object: name of the object.
     ///   - bucket: name of the bucket.
     ///   - content: Data oto be writen.
+    ///   - metadata: object metadata.
     ///   - container: Vapor Container.
     /// - Returns: Future<ObjectInfo>
     /// - Throws: <#throws value description#>
-    func create(object: String, in bucket: String, with content: Data, on container: Container) throws -> Future<ObjectInfo>
+    func create(object: String, in bucket: String, with content: Data, metadata: Codable?, on container: Container) throws -> Future<ObjectInfo>
     
     /// Permanently deletes an empty bucket.
     ///
