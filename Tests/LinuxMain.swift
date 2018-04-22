@@ -1,7 +1,15 @@
+//
+//  LinuxMain.swift
+//  StorageKit
+//
+//  Created by Gustavo Perdomo on 4/16/18.
+//  Copyright © 2018 Gustavo Perdomo. All rights reserved.
+//
+
 import XCTest
 
-import storage_kitTests
+import StorageKitTests
 
 var tests = [XCTestCaseEntry]()
-tests += storage_kitTests.allTests()
+tests += StorageKitTests.allTests()
 XCTMain(tests)

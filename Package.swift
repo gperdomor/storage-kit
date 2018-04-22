@@ -3,20 +3,15 @@
 import PackageDescription
 
 let package = Package(
-    name: "storage-kit",
+    name: "StorageKit",
     products: [
-        .library(
-            name: "storage-kit",
-            targets: ["StorageKit"]),
+        .library(name: "StorageKit", targets: ["StorageKit"])
     ],
     dependencies: [
+        .package(url: "https://github.com/vapor/vapor.git", from: "3.0.0-rc")
     ],
     targets: [
-        .target(
-            name: "StorageKit",
-            dependencies: []),
-        .testTarget(
-            name: "StorageKitTests",
-            dependencies: ["StorageKit"]),
+        .target(name: "StorageKit", dependencies: ["Vapor"]),
+        .testTarget(name: "StorageKitTests", dependencies: ["StorageKit"])
     ]
 )
