@@ -22,7 +22,7 @@ public protocol Adapter: class {
     ///   - container: Vapor Container.
     /// - Returns: Future<Void>
     /// - Throws: <#throws value description#>
-    func create(bucket: String, metadata: Codable?, on container: Container) throws -> Future<Void>
+    func create(bucket: String, metadata: StorageMetadata?, on container: Container) throws -> Future<Void>
     
     /// Permanently deletes an empty bucket.
     ///
@@ -73,7 +73,7 @@ public protocol Adapter: class {
     ///   - container: Vapor Container.
     /// - Returns: Future<ObjectInfo>
     /// - Throws: <#throws value description#>
-    func create(object: String, in bucket: String, with content: Data, metadata: Codable?, on container: Container) throws -> Future<ObjectInfo>
+    func create(object: String, in bucket: String, with content: Data, metadata: StorageMetadata?, on container: Container) throws -> Future<ObjectInfo>
     
     /// Permanently deletes an empty bucket.
     ///
