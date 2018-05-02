@@ -21,7 +21,7 @@ class DummyAdapter: Adapter {
         self.id = id
     }
     
-    func create(bucket: String, metadata: Codable?, on container: Container) throws -> EventLoopFuture<Void> {
+    func create(bucket: String, metadata: StorageMetadata?, on container: Container) throws -> EventLoopFuture<Void> {
         throw TestError.notImplemented
     }
     
@@ -41,7 +41,7 @@ class DummyAdapter: Adapter {
         throw TestError.notImplemented
     }
     
-    func create(object: String, in bucket: String, with content: Data, metadata: Codable?, on container: Container) throws -> EventLoopFuture<ObjectInfo> {
+    func create(object: String, in bucket: String, with content: Data, metadata: StorageMetadata?, on container: Container) throws -> EventLoopFuture<ObjectInfo> {
         throw TestError.notImplemented
     }
     

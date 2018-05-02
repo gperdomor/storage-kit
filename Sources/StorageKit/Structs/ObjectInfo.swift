@@ -25,6 +25,9 @@ public struct ObjectInfo: Content {
     /// Time when object was last modified.
     public let lastModified: Date?
     
+    /// the absolute URL of the object.
+    public let url: URL?
+    
     
     /// Create a new ObjectInfo.
     ///
@@ -34,11 +37,12 @@ public struct ObjectInfo: Content {
     ///   - size: Size of the object.
     ///   - etag: MD5 checksum.
     ///   - lastModified: Time when object was last modified.
-    public init(name: String, prefix: String?, size: Int?, etag: String, lastModified: Date?) {
+    public init(name: String, prefix: String?, size: Int?, etag: String, lastModified: Date?, url: URL?) {
         self.name = name
         self.prefix = prefix
         self.size = size
         self.etag = etag
         self.lastModified = lastModified
+        self.url = url
     }
 }
