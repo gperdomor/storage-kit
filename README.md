@@ -9,12 +9,13 @@
 A protocol based storage framework to provide an easy way integrate and use third-party storage providers in Vapor.
 
 Main goals:
-- Provide a common way to manipulate files in your app without worry about the provider (local, S3, Azure, GCS).
-- Allow users to switch between storage providers without (or minimal) changes to the source code of their apps.
+
+* Provide a common way to manipulate files in your app without worry about the provider (local, S3, Azure, GCS).
+* Allow users to switch between storage providers without (or minimal) changes to the source code of their apps.
 
 ## Available implementations
 
-TODO
+* [LocalStorage](https://github.com/gperdomor/local-storage)
 
 ## Credits
 
