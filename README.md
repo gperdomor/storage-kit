@@ -16,6 +16,8 @@ Main goals:
 ## Available implementations
 
 * [LocalStorage](https://github.com/gperdomor/local-storage)
+* [S3Storage](https://github.com/anthonycastelli/s3-storage)
+
 
 ## Credits
 
