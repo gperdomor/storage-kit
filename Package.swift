@@ -8,7 +8,7 @@ let package = Package(
         .library(name: "StorageKit", targets: ["StorageKit"])
     ],
     dependencies: [
-        .package(url: "https://github.com/vapor/vapor.git", from: "3.0.0-rc")
+        .package(url: "https://github.com/vapor/vapor.git", from: "3.0.0")
     ],
     targets: [
         .target(name: "StorageKit", dependencies: ["Vapor"]),
