@@ -14,6 +14,11 @@ public typealias StorageACL = [ACLPermission: [ACLKey: String]]
 public struct StorageMetadata: Codable {
     public let predefinedACL: PredefinedACL?
     public let acl: StorageACL
+    
+    public init(predefinedACL: PredefinedACL?, acl: StorageACL) {
+        self.predefinedACL = predefinedACL
+        self.acl = acl
+    }
 }
 
 public enum PredefinedACL: String, Codable {
